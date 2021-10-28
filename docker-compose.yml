@@ -1,0 +1,19 @@
+version: "2.0"
+services:
+
+  api:
+    container_name: nest_api
+    build: .
+    ports:
+      - "3000:3000"
+
+  database:
+    container_name: nest_db
+    image: mysql
+    environment:
+      MYSQL_DATABASE: nest_api
+      MYSQL_ROOT_PASSWORD: m@leav3l
+      MYSQL_USER: root
+      MYSQL_PASSWORD: m@leav3l
+    ports:
+      - "3307:3306"
