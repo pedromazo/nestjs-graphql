@@ -17,6 +17,13 @@ export class UserResolver {
     }
 
     @Query(() => User)
+    async userByEMail(
+        @Args('email') email: string
+    ): Promise<User> {
+        return this.userService.findUserByEmail(email);
+    }
+
+    @Query(() => User)
     async user(
         @Args('id') id: string
     ): Promise<User> {
