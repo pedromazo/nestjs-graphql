@@ -3,6 +3,8 @@ import { CreateUserInput } from './dto/create-user.input';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { UpdateUserInput } from './dto/update-user.input';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from 'src/auth/auth.guard';
 
 @Resolver()
 export class UserResolver {
@@ -23,6 +25,7 @@ export class UserResolver {
         return this.userService.findUserByEmail(email);
     }
 
+    @UseGuards(GqlAuthGuard)
     @Query(() => User)
     async user(
         @Args('id') id: string
