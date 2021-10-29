@@ -12,4 +12,9 @@ export class UpdateUserInput {
     @IsNotEmpty({message: "Este campo não pode estar vazio"})
     @IsOptional()
     email?: string;
+
+    @IsOptional()
+    @IsString()
+    @IsNotEmpty({message: "Password is required"})
+    password?: string;
 }
